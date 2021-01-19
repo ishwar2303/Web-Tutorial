@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Web Tutorial</title>
+        <title>PHP Tutorial</title>
     </head>
     <body>
         <h1 onmouseover="this.style.background='blue'" style="color:red;">Welcom to tutorial</h1>

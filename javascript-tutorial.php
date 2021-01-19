@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Web Tutorial</title>
+        <title>JavaScript Tutorial</title>
         <style>
             /* write css code here*/
             body{
