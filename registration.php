@@ -52,6 +52,9 @@
                 $user_email_error = 'Invalid E-mail';
                 $control = 0;
             }
+            else{ // valid E-mail 
+                // write code here to check whether email already exist or not
+            }
         }
         else{
             $user_email_error = 'E-mail required';
