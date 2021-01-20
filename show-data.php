@@ -2,8 +2,7 @@
 
     require_once('connection.php');
 
-    $sql = "SELECT user_name, user_email FROM `user_registration`";
-    
+    $sql = "SELECT * FROM `user_registration`";
     //$sql = "SELECT user_name, user_email FROM `user_registration` WHERE user_email='ishwar2303@gmail.com'";
     $result = $conn->query($sql);
 
@@ -23,6 +22,8 @@
 <html>
     <head>
         <title>View Data</title>
+        <h1>DATABASE : web_tutorial</h1>
+        <h3>TABLE : user_registration</h3>
         <style>
             table{
                 margin-top : 10px;
@@ -34,6 +35,12 @@
                 padding : 10px;
                 border : 0.5px solid #bdc3c7;
             }
+            tr:nth-child(even){
+                background : #ecf0f1;
+            }
+            tr:nth-child(odd){
+                background : rgba(0,0,255,0.2);
+            }
         </style>
     </head>
     <body>
@@ -42,6 +49,7 @@
                 <th>User ID</th>
                 <th>User Name</th>
                 <th>User E-mail</th>
+                <th>User Password</th>
             </tr>
             <?php 
 
@@ -65,6 +73,7 @@
                         <td> <?php echo $serial_no; ?></td>
                         <td> <?php echo $row['user_name']; ?></td>
                         <td> <?php echo $row['user_email']; ?></td>
+                        <td> <?php echo $row['user_password']; ?></td>
                     </tr>
             <?php       
                    

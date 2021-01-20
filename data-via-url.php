@@ -3,10 +3,10 @@
         <title>PHP Tutorial</title>
     </head>
     <body>
-        <h1>Sending data through URL</h1>
+        <h1>Sending data through URL Method="GET"</h1>
         <h3>URL limit 2048 characters</h3>
         <h3>data expose (email, password)</h3>
-        <form action="submit-data.php" method="GET">
+        <form action="submit-data-via-url.php" method="GET">
             Full Name :
             <input type="text" name="fullname">
             <br/>
