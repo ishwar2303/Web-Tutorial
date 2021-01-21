@@ -1,27 +1,17 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WEB Tutorial</title>    
+        <link rel="stylesheet" type="text/css" href="public/css/common.css">
     </head>
     <body>
-        <ul>
-            <a href="data-via-url.php">
-                <li>Data via url</li>
-            </a>
-            <a href="registration.php">
-                <li>Registration</li>
-            </a>
-            <a href="login.php">
-                <li>Login</li>
-            </a>
-            <a href="registered-user.php">
-                <li>Registered Users (user_registration table)</li>
-            </a>
-            <a href="sql-injection.php">
-                <li>SQL Injection</li>
-            </a>
-            
-            
-        </ul>
+        <h1 class="heading">WEB TUTORIAL</h1>
+        <div class="work-list">
+            <a class="success" href="registration.php">Registration</a>
+            <a class="success" href="login.php">LogIn</a>
+            <a class="success" href="sql-injection.php">SQL Injection</a>
+        </div>
     </body>
 
 </html>

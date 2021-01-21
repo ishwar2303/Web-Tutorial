@@ -9,14 +9,15 @@
     $user_password_error = '';
     $user_confirm_password_error = '';
     $register_success = '';
-
     function cleanInput($str){
         $str = trim($str); // remove white spaces
         $str = strip_tags($str); // remove html tags
+        $str = addslashes($str); // stop sql injection
         return $str;
     }
+
     function emailValidation($email_to_validate){
-        $reg_exp = "/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"; // regular expression for email
+        $reg_exp = "/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/"; // regular expression for email
         return preg_match($reg_exp, $email_to_validate);
     }
     
@@ -25,6 +26,10 @@
         return preg_match($reg_exp, $password_to_validate);
     }
     
+    function fullnameValidation($name_to_validate){
+        $reg_exp = "/^[a-zA-Z]+$/";
+        return preg_match($reg_exp, $name_to_validate);
+    }
 
     if(isset($_POST['fullname']) && isset($_POST['userEmail']) && isset($_POST['userPassword']) && isset($_POST['userConfPassword'])){
         // initialize variables with user data
@@ -37,6 +42,10 @@
         if(!empty($fullname)){
             if(strlen($fullname) < 2){
                 $fullname_error = 'Invalid name';
+                $control = 0;
+            }
+            if(!fullnameValidation($fullname)){
+                $fullname_error = 'Special charcters not allowed!';
                 $control = 0;
             }
         }
@@ -52,8 +61,13 @@
                 $user_email_error = 'Invalid E-mail';
                 $control = 0;
             }
-            else{ // valid E-mail 
-                // write code here to check whether email already exist or not
+            else{ // valid E-mail
+                $sql = "SELECT user_email FROM user_registration WHERE user_email = '$user_email'";
+                $result = $conn->query($sql);
+                if($result->num_rows == 1){
+                    $user_email_error = 'E-mail already register';
+                    $control = 0;
+                }
             }
         }
         else{
@@ -103,6 +117,8 @@
 
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WT | REGISTER</title>
         <link rel="stylesheet" type="text/css" href="pretty-forms-assets/css/form.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -121,6 +137,7 @@
                         <span>
                         <?php echo $register_success; ?>
                         </span>
+                        <a href="login.php">Login Now</a>
                     </div>
                 <?php } ?>
                 <form action="" method="POST" id="validate-form" class="form-layout" novalidate>

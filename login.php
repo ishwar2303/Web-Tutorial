@@ -1,10 +1,11 @@
 <?php 
+    session_start();
     require_once('connection.php');
     $user_email = '';
     $user_password = '';
     $user_email_error = '';
     $user_password_error = '';
-
+    $login_error = '';
     function cleanInput($str){
         $str = trim($str); // remove white spaces
         $str = strip_tags($str); // remove html tags
@@ -34,7 +35,12 @@
                 $control = 0;
             }
             else{ 
-
+                $sql = "SELECT user_email FROM user_registration WHERE user_email = '$user_email'";
+                $result = $conn->query($sql);
+                if($result->num_rows == 0){
+                    $user_email_error = "Not registered!";
+                    $control = 0;
+                }
             }
         }
         else{
@@ -43,19 +49,24 @@
         }
 
         $user_password = cleanInput($user_password);
-        if(!empty($user_password)){ // not empty
-            if(!passwordValidation($user_password)){ // call for password validation
-                $user_password_error = 'Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
-                <br>Maximum limit 20 characters';
-                $control = 0;
-            }
-        }
-        else{
+        if(empty($user_password)){ // not empty
             $user_password_error = 'Password required';
             $control = 0;
         }
 
         if($control){ 
+
+            $sql = "SELECT * FROM user_registration WHERE user_email = '$user_email' AND user_password ='$user_password'";
+            $result = $conn->query($sql);
+
+            if($result->num_rows == 1){ // authenticated
+                $_SESSION['login_time'] = time();
+                header('Location: header.php');
+                exit;
+            }
+            else{
+                $login_error = 'Wrong credentials!';
+            }
             
         }
     }
@@ -63,6 +74,8 @@
 
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WT | LOGIN</title>
         <link rel="stylesheet" type="text/css" href="pretty-forms-assets/css/form.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -74,6 +87,14 @@
                 <h5 class="form-header">
                     <label>User Login</label>
                 </h5>
+                <?php if($login_error != ''){ ?>
+                <div class="login-error">
+                    <i class="fa fa-close"></i>
+                    <span>
+                        <?php echo $login_error; ?>
+                    </span>
+                </div>
+                <?php } ?>
                 <form action="" method="POST" id="validate-form" class="form-layout" novalidate>
                     <div class="set-row">
                         <div class="set-col">

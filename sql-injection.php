@@ -7,6 +7,7 @@
     if(isset($_POST['registrationId'])){
         $registration_id = $_POST['registrationId'];
         $control = 1;
+        //$registration_id = addslashes($registration_id); stop sql injection
         if(empty($registration_id)){
             $registration_id_error = 'ID required';
             $control = 0;
@@ -38,9 +39,10 @@
             <h2 class="heading">SQL Injection</h2>
             <h3>SQL Query : "SELECT * FROM user_registration WHERE registration_id = 'Enter by client'"</h3>
             <h3>What if user enters sql query part instead of normal data?</h2> 
-            <h5>Try entering : something' OR 1='1</h5>
+            <h5>Try entering : <span style="background : rgba(0,255,0,0.3);padding: 5px 10px;border-radius:5px;">something' OR 1='1</span></h5>
             <h5>Query become : SELECT * FROM user_registration WHERE registration_id = 'ishwar' OR 1 = '1'</h5>
             <h5>1 = '1' is always true so database will give you all data</h5>
+            <h5>Use addslashes(string) function to add backslashes to predefined characters : double quotes, single quotes, NULL, backslash</h5>
             <?php if($db_error != ''){ ?>
                 <h3 class="error"><?php echo $db_error; ?></h3>
             <?php } ?>

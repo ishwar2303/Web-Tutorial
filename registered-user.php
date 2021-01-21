@@ -3,9 +3,10 @@
     require_once('connection.php');
 
     $sql = "SELECT * FROM `user_registration`";
-    //$sql = "SELECT user_name, user_email FROM `user_registration` WHERE user_email='ishwar2303@gmail.com'";
+    //$sql = "SELECT * FROM `user_registration` WHERE user_email='ishwar2303@gmail.com'";
     $result = $conn->query($sql);
-
+    print_r($result);
+    
     /*
     $row_count = $result->num_rows;
     print_r($result);
