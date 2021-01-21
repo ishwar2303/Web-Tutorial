@@ -23,6 +23,9 @@
     background: white;
     margin-top: 20px;
 }
+.login-form{
+    width: 400px;
+}
 form{
     padding: 0px 20px;
     background: white;
@@ -31,7 +34,7 @@ form{
 /* form-header */
 .form-header{
     font-size: 20px;
-    background : #60a3bc;
+    background :rgba(40,40,40);
     margin: 0;
     color: white;
     margin-bottom: 20px;
@@ -49,7 +52,7 @@ form{
 /* form footer */
 .form-footer{
     padding: 5px 0px;
-    background : #60a3bc;
+    background :rgba(40,40,40);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
@@ -93,7 +96,7 @@ form{
 }
 .form-input:focus, .form-input-optional:focus{
     outline: none;
-    box-shadow: 0px 0px 0px 3px rgb(52, 152, 219,0.5);
+    box-shadow: 0px 0px 0px 3px rgb(52, 152, 219,0.2);
 }
 .input-wrap-for-icon{
     display: flex;
@@ -105,12 +108,12 @@ form{
     justify-content: center;
     align-items: center;
     width: 50px;
-    background: #ecf0f1;
+    background: rgb(52, 152, 219,0.2);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    color: #7f8c8d;
+    color: rgb(52, 152, 219,1);
     font-size: 20px;
     border-left: 0.5px solid #bdc3c7;
     border-top: 0.5px solid #bdc3c7;
@@ -265,17 +268,16 @@ form select{
     margin-bottom: 10px;
 }
 .submit-btn-wrapper > button{
-    border-radius: 5px;
+    border-radius: 10px;
     background: white;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
-    border : 2px solid #27ae60;
     font-weight: 500;
-    text-transform: uppercase;
-    font-size: 16px;
+    font-size: 14px;
     height: 35px;
-    background: #27ae60;
+    background: #3498db;
     color: white;
-    width: 150px;
+    padding: 0px 20px;
+    border : none;
 }
 
 .submit-btn-wrapper > button:focus{
@@ -285,7 +287,6 @@ form select{
 .submit-btn-wrapper > button:hover{
     transition: 600ms;
     color: white;
-    border : 2px solid white;
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
 }
 /* */
@@ -366,10 +367,15 @@ form select{
     align-items: center;
     border-radius: 5px;
     color: green;
-    padding-left: 20px;
+    margin: 0px 20px;
+    background: rgba(0,255,0, 0.5);
     font-size: 16px;
     text-align: center;
-    width: 100%;
+    max-width: 100%;
+    padding: 11px 8px;
+}
+.register-success > i{
+    margin-right: 5px;
 }
 /* responsive layout for devices having maximum width 800px */
 @media screen and (max-width : 800px){

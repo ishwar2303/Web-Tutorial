@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2021 at 07:58 PM
+-- Generation Time: Jan 21, 2021 at 11:34 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `user_registration` (
   `registration_id` int(11) NOT NULL,
-  `user_name` varchar(30) NOT NULL,
-  `user_email` varchar(40) NOT NULL,
+  `user_name` varchar(40) NOT NULL,
+  `user_email` varchar(50) NOT NULL,
   `user_password` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,9 +39,12 @@ CREATE TABLE `user_registration` (
 --
 
 INSERT INTO `user_registration` (`registration_id`, `user_name`, `user_email`, `user_password`) VALUES
-(9, 'Ishwar Baisla', 'ishwar2303@gmail.com', '23031999'),
-(11, 'Samarth Tandon', 'samarth@gmail.com', '12345678'),
-(12, 'akash', 'akash@gmail.com', '2303199');
+(50, 'Ishwar Baisla', 'ishwar2303@gmail.com', 'Ishwar2303@'),
+(51, 'Akash', 'akash@gmail.com', 'Akash@200'),
+(52, 'Khubaib', 'khubaib@gmail.com', '123456K@u'),
+(53, 'Ishwar Baisla', 'ib4717@srmist.edu.in', 'Baisla1999@'),
+(55, 'Akash', 'akash100@yahoo.in', 'Akashsrm@100'),
+(56, 'Samarth Tandon', 'samarth@gmail.com', 'Samarth@12345');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +64,7 @@ ALTER TABLE `user_registration`
 -- AUTO_INCREMENT for table `user_registration`
 --
 ALTER TABLE `user_registration`
-  MODIFY `registration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `registration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

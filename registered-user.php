@@ -46,6 +46,7 @@
     <body>
         <table>
             <tr>
+                <th>Serial No</th>
                 <th>User ID</th>
                 <th>User Name</th>
                 <th>User E-mail</th>
@@ -70,10 +71,11 @@
 
             ?>
                     <tr>
-                        <td> <?php echo $serial_no; ?></td>
-                        <td> <?php echo $row['user_name']; ?></td>
-                        <td> <?php echo $row['user_email']; ?></td>
-                        <td> <?php echo $row['user_password']; ?></td>
+                        <td> <?php echo $serial_no; ?> </td>
+                        <td> <?php echo $row['registration_id']; ?> </td>
+                        <td> <?php echo $row['user_name']; ?> </td>
+                        <td> <?php echo $row['user_email']; ?> </td>
+                        <td> <?php echo $row['user_password']; ?> </td>
                     </tr>
             <?php       
                    

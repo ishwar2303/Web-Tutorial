@@ -1,14 +1,9 @@
 <?php 
     require_once('connection.php');
-    $fullname = '';
     $user_email = '';
     $user_password = '';
-    $user_confirm_password = '';
-    $fullname_error = '';
     $user_email_error = '';
     $user_password_error = '';
-    $user_confirm_password_error = '';
-    $register_success = '';
 
     function cleanInput($str){
         $str = trim($str); // remove white spaces
@@ -26,25 +21,11 @@
     }
     
 
-    if(isset($_POST['fullname']) && isset($_POST['userEmail']) && isset($_POST['userPassword']) && isset($_POST['userConfPassword'])){
+    if(isset($_POST['userEmail']) && isset($_POST['userPassword'])){
         // initialize variables with user data
-        $fullname = $_POST['fullname'];
         $user_email = $_POST['userEmail'];
         $user_password = $_POST['userPassword'];
-        $user_confirm_password = $_POST['userConfPassword'];
         $control = 1;
-        $fullname = cleanInput($fullname);
-        if(!empty($fullname)){
-            if(strlen($fullname) < 2){
-                $fullname_error = 'Invalid name';
-                $control = 0;
-            }
-        }
-        else{ // empty 
-            $fullname_error = 'Full name required';
-            $control = 0;
-        }
-
         
         $user_email = cleanInput($user_email);
         if(!empty($user_email)){ // not empty
@@ -52,8 +33,8 @@
                 $user_email_error = 'Invalid E-mail';
                 $control = 0;
             }
-            else{ // valid E-mail 
-                // write code here to check whether email already exist or not
+            else{ 
+
             }
         }
         else{
@@ -74,71 +55,27 @@
             $control = 0;
         }
 
-        $user_confirm_password = cleanInput($user_confirm_password);
-        if(!empty($user_confirm_password)){
+        if($control){ 
             
-        }
-        else{
-            $user_confirm_password_error = 'Confirm password required';
-            $control = 0;
-        }
-
-        if($user_password != $user_confirm_password){ // check for both password
-            $user_confirm_password_error = 'Password not matched';
-            $control = 0;
-        }
-        
-        if($control){ // Insert data into database control = 1
-            $sql = "INSERT INTO `user_registration` (`registration_id`, `user_name`, `user_email`, `user_password`) VALUES (NULL, '$fullname', '$user_email', '$user_password')";
-            $conn->query($sql); 
-            $register_success = 'Successfully registered';
-            $fullname = '';
-            $user_email = '';
-            $user_password = '';
-            $user_confirm_password = '';
-            unset($_POST);
         }
     }
 ?>
 
 <html>
     <head>
-        <title>WT | REGISTER</title>
+        <title>WT | LOGIN</title>
         <link rel="stylesheet" type="text/css" href="pretty-forms-assets/css/form.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <div class="wrapper">
             
-            <div class="form-container">
+            <div class="form-container login-form">
                 <h5 class="form-header">
-                    <label>User Registration</label>
+                    <label>User Login</label>
                 </h5>
-                <!-- Message for registration success -->
-                <?php if($register_success != ''){ ?>
-                    <div class="register-success">
-                        <i class="fa fa-check"></i>
-                        <span>
-                        <?php echo $register_success; ?>
-                        </span>
-                    </div>
-                <?php } ?>
                 <form action="" method="POST" id="validate-form" class="form-layout" novalidate>
                     <div class="set-row">
-                        <div class="set-col">
-                            <div class="input-container">
-                                <label class="input-label">Full Name</label>
-                                <div class="input-wrap-for-icon">
-                                    <span>
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <input class="form-input" type="text" name="fullname" value="<?php echo $fullname; ?>" placeholder="First Name" required="">
-                                </div>
-                            </div>
-                            <div class="form-input-response">
-                                <?php echo $fullname_error; ?>
-                            </div>
-                        </div>
                         <div class="set-col">
                             <div class="input-container">
                                 <label class="input-label">E-mail</label>
@@ -171,32 +108,17 @@
                                 <?php echo $user_password_error; ?>
                             </div>
                         </div>
-                        <div class="set-col">
-                            <div class="input-container">
-                                <label class="input-label">Confirm Password</label>
-                                <div class="input-wrap-for-icon">
-                                    <span>
-                                        <i class="fa fa-key"></i>
-                                    </span>
-                                    <input id="conf-password" class="form-input" type="password" name="userConfPassword" value="<?php echo $user_confirm_password; ?>" placeholder="Confirm Password" required="">
-                                    <i id="password-match-icon" class="fa fa-check"></i> <!-- Password match -->
-                                    <i id="password-not-match-icon" class="fa fa-close"></i> <!-- Password not match -->
-                                </div>
-                            </div>
-                            <div class="form-input-response">
-                                <?php echo $user_confirm_password_error; ?>
-                            </div>
-                        </div>
                     </div>
             
                     <div class="submit-btn-wrapper">
-                        <button id="submit-btn">Register</button>
+                        <button id="submit-btn">Login</button>
                     </div>
                 </form>
                 <div class="form-footer"></div>
             </div>
     
         </div>
+
         <script type="text/javascript" src="pretty-forms-assets/js/form.js"></script>
 
     </body>
