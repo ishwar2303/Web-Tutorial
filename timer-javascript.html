@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        #timer{
+            color: green;
+            font-weight: 600;
+            font-size: 30px;
+            background: rgba(0,255,0,0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin: 10px;
+            position: absolute;
+            left: 50%;
+            top : 20%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="timer"></div>
+    <script>
+        let seconds = 3600
+        function timer(){
+            console.log('Seconds left : ' + seconds)
+            let hour = parseInt(seconds/(3600))
+            let timeLeft = seconds - hour*3600
+
+            let minute = parseInt(timeLeft/60)
+            timeLeft = timeLeft - minute*60
+
+            let second = timeLeft
+            
+            hour = hour.toString()
+            minute = minute.toString()
+            second = second.toString()
+            if(hour.length == 1)
+                hour = '0' + hour
+            if(minute.length == 1)
+                minute = '0' + minute
+            if(second.length == 1)
+                second = '0' + second
+            
+            let watch = hour + ' : ' + minute + ' : ' + second
+
+            let timerElement = document.getElementById('timer')
+            timerElement.style.display = 'block'
+            timerElement.innerHTML = watch
+            seconds--
+            console.log(watch)
+            if(seconds < 60){
+                timerElement.style.color = 'red'
+                timerElement.style.background = 'rgba(255,0,0,0.2)'
+                setTimeout(() => {timerElement.style.display = 'none'},600)
+            }
+            if(seconds < 0)
+                timerElement.innerHTML = 'Time Ends'
+        }
+        setInterval(timer, 1000)
+    </script>
+</body>
+</html>
