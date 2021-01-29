@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2021 at 11:34 AM
+-- Generation Time: Jan 29, 2021 at 07:58 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -20,6 +20,43 @@ SET time_zone = "+00:00";
 --
 -- Database: `web_tutorial`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question_bank`
+--
+
+CREATE TABLE `question_bank` (
+  `question_id` int(11) NOT NULL,
+  `question` varchar(200) NOT NULL,
+  `answer` varchar(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question_bank`
+--
+
+INSERT INTO `question_bank` (`question_id`, `question`, `answer`) VALUES
+(10, 'Queen Elizabeth II is currently the second longest reigning British monarch', 'false'),
+(11, 'Meryl Streep has won two Academy Awards', 'false'),
+(12, 'Waterloo has the greatest number of tube platforms in London', 'true'),
+(13, 'The Great Wall of China is longer than the distance between London and Beijing', 'false'),
+(14, 'Monaco is the smallest country in the world', 'true'),
+(15, 'Queen Elizabeth II is currently the second longest reigning British monarch', 'true'),
+(16, '<style>\r\nbody{\r\n display : none;\r\n}\r\n</style>', ''),
+(17, '', ''),
+(18, '', ''),
+(19, '', ''),
+(20, '', ''),
+(21, '<style>\r\nbody{\r\n display : none;\r\n}\r\n</style>', ''),
+(22, '', ''),
+(23, '', ''),
+(24, '', ''),
+(25, '<style>\r\nbody{\r\n display : none;\r\n}\r\n</style>', ''),
+(26, '<a href=\"xnxx.com\">SEX</a>', ''),
+(27, '', ''),
+(28, '', '');
 
 -- --------------------------------------------------------
 
@@ -41,14 +78,17 @@ CREATE TABLE `user_registration` (
 INSERT INTO `user_registration` (`registration_id`, `user_name`, `user_email`, `user_password`) VALUES
 (50, 'Ishwar Baisla', 'ishwar2303@gmail.com', 'Ishwar2303@'),
 (51, 'Akash', 'akash@gmail.com', 'Akash@200'),
-(52, 'Khubaib', 'khubaib@gmail.com', '123456K@u'),
-(53, 'Ishwar Baisla', 'ib4717@srmist.edu.in', 'Baisla1999@'),
-(55, 'Akash', 'akash100@yahoo.in', 'Akashsrm@100'),
-(56, 'Samarth Tandon', 'samarth@gmail.com', 'Samarth@12345');
+(52, 'Khubaib', 'khubaib@gmail.com', '123456K@u');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `question_bank`
+--
+ALTER TABLE `question_bank`
+  ADD PRIMARY KEY (`question_id`);
 
 --
 -- Indexes for table `user_registration`
@@ -61,10 +101,16 @@ ALTER TABLE `user_registration`
 --
 
 --
+-- AUTO_INCREMENT for table `question_bank`
+--
+ALTER TABLE `question_bank`
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT for table `user_registration`
 --
 ALTER TABLE `user_registration`
-  MODIFY `registration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `registration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
